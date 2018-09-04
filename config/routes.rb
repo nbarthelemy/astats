@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # create the api endpoints in the correct scope
+  scope module: :api, defaults: { format: :json } do
+    namespace :v1 do
+    end
+  end
+
+  root 'dashboard#index'
+
 end
