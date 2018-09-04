@@ -29,9 +29,9 @@ module Astats
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
 
-    # Middleware for Single Page App controller
-    config.middleware.use Rack::MethodOverride
+    # Use api only mode because we don't need a lot of the overhead that
+    # comes along with the full rails stack
+    config.api_only = true
   end
 end
