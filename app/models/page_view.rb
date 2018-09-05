@@ -14,4 +14,8 @@ class PageView < Sequel::Model
     end
   end
 
+  def self.daily_top_five_referrers_by_url_since(since_date)
+    {}
+  end
+
 end
