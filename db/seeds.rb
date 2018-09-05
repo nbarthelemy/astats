@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'page_view_data'
+require 'benchmark'
+
+Benchmark.bm do |x|
+  # Truncate the page_views table
+  x.report("truncate") { Sequel::Model.db[:page_views].truncate }
+
+  # Generate a dataset with 1 million rows
+  x.report("generate") { PageViewData::Generator.run(1_000_000) }
+end
