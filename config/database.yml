@@ -10,4 +10,4 @@ development:
 
 test:
   <<: *default
-  database: astats_development
+  database: astats_test
