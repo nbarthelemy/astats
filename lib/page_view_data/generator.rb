@@ -40,7 +40,7 @@ module PageViewData
     end
 
     def random_timestamp
-      rand(15).days.ago.to_s(:db)
+      rand(15).days.ago.utc.to_s(:db)
     end
 
     def fake_urls
