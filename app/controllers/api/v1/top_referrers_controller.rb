@@ -3,7 +3,7 @@ module Api::V1
 
     def index
       json = Rails.cache.fetch('top_referrers_index_json', expires_in: 1.hour) do
-        PageView.daily_top_five_referrers_by_url_since(5.days.ago.to_date).to_json
+        PageView.top_five_referrers_by_url_since(5.days.ago).to_json
       end
       render json: json
     end
