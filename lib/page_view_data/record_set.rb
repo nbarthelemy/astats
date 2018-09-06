@@ -42,12 +42,8 @@ module PageViewData
 
   private
 
-    def md5_hash(hash)
-      Digest::MD5.hexdigest(hash.compact.to_s)
-    end
-
     def build_sql_value_string(id, url, referrer, created_at)
-      hash_value = md5_hash(id: id, url: url, referrer: referrer, created_at: created_at)
+      hash_value = Digest::MD5.hexdigest(id: id, url: url, referrer: referrer, created_at: created_at.utc.to_s).compact.to_s)
       "(#{id}, '#{url}', #{referrer.nil? ? "null" : "'#{referrer}'"}, '#{hash_value}', '#{created_at}')"
     end
 
