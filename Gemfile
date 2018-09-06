@@ -57,3 +57,8 @@ group :development, :test do
   gem 'byebug', platforms: [ :mri, :mingw, :x64_mingw ]
   gem 'minitest-rails', '~> 3.0'
 end
+
+group :test do
+  # fixtures for Sequel
+  gem 'fixture_dependencies'
+end
