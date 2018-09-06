@@ -37,4 +37,20 @@ class PageViewTest < ActiveSupport::TestCase
     end
   end
 
+  describe "instance_methods" do
+    describe "#md5_hash" do
+      setup do
+        @page_view = PageView.create(url: 'http://apple.com', referrer: nil)
+      end
+
+      it "should generate an md5_hash for the record before_save" do
+        assert_not_nil @page_view.hash
+      end
+
+      it "should add a created_at timestamp for the record before_save" do
+        assert_not_nil @page_view.created_at
+      end
+    end
+  end
+
 end

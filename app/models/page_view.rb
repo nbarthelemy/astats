@@ -1,5 +1,11 @@
 class PageView < Sequel::Model
 
+  def before_save
+    self.created_at ||= Time.now.utc
+    self.hash = md5_hash
+    super
+  end
+
   def self.visits_by_url_since(timestamp)
     sql = <<-SQL
       SELECT created_at::DATE, url, count(url) as visits
@@ -53,6 +59,12 @@ class PageView < Sequel::Model
       data[date][url][:referrers] << { url: record[:referrer], visits: record[:referrer_visits] }
       data
     end
+  end
+
+  def md5_hash
+    hash = self.to_hash
+    hash[:created_at] = hash[:created_at].utc.to_s
+    Digest::MD5.hexdigest(hash.compact.to_s)
   end
 
 end
