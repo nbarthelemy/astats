@@ -1,0 +1,10 @@
+<% { apple: [ :google, :amazon, :ebay ], google: [ :apple ] }.map do |k, v| %>
+  <% v.each do |referrer| %>
+    <% 1.upto(5) do |d| %>
+<%= [ k, referrer, d ].join('_') %>_days_ago:
+  url: "http://<%= k %>.com"
+  referrer: "http://<%= referrer %>.com"
+  created_at: <%= d.days.ago.utc %>
+    <% end %>
+  <% end %>
+<% end %>
