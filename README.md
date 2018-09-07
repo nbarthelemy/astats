@@ -8,7 +8,7 @@ A couple of points to note:
 * Delivering the stats data also proved to be extremely slow when aggregated using ruby. I tried to put as much load as I could on the database to give me the most complete dataset in the initial query. Leveraging Postgres specific functions helped to better manage the return record set.
 * Everything is assumed to be and converted to UTC. This is important because the database and the Rails timezone can differ. Results may vary if standardization is not in place.
 
-## To make it run
+## Make It Run!
 
 You may want to have RVM or rbenv set up, but I will leave that up to the consumer. Once you have pull the code down and moved into the diectory, run the following commands:
 
@@ -25,7 +25,7 @@ foreman start
 ```
 ( note: `rake db:setup` is sort of wonky with the Sequel adapater. Not sure why. Hence the multi-step process. )
 
-To run the test execute the following commands:
+To run the tests execute the following commands:
 
 ```
 rake db:test:prepare
