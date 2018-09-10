@@ -1,6 +1,6 @@
 class PageView < Sequel::Model
 
-  def before_save
+  def before_create
     self.created_at ||= Time.now.utc
     self.hash = md5_hash
     super
